@@ -1,4 +1,4 @@
-import { MessageSquareMore, SettingsIcon } from 'lucide-react';
+import { Bot, MessageSquareMore, SettingsIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = ({ openSettings, settings }) => {
@@ -11,8 +11,8 @@ const Sidebar = ({ openSettings, settings }) => {
       <div className={`p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <h1 className="text-xl font-bold flex items-center">
           <Link to="/" className="flex items-center">
-            <span className="mr-2">🎓</span>
-            대가봇
+            <span className="mr-2"><Bot></Bot></span>
+            TEST
           </Link>
         </h1>
       </div>
@@ -24,7 +24,7 @@ const Sidebar = ({ openSettings, settings }) => {
 
         <div className={`border-t my-3 ${isDark ? 'border-gray-700' : 'border-gray-200'}`}></div>
         <div className={`text-sm mb-2 px-3 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-          대화
+          대화 목록
         </div>
         
       </div>
