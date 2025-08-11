@@ -9,7 +9,11 @@ const ChatArea = ({ messages, sendMessage, isLoading, settings }) => {
     <div className={`flex-1 flex flex-col ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
       <div className={`p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <h2 className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          모델 선택
+          <select className={`text-lg text-grey-500 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} name='model'>
+            <option className={'rounded'} value="model1">model 1</option>
+            <option value="model2">model 2</option>
+            <option value="model3">model 3</option>
+          </select>
         </h2>
       </div>
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
