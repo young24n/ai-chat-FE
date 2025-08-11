@@ -1,8 +1,9 @@
 import { Bot, MessageSquareMore, SettingsIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import type { SidebarProps } from '../types';
 
-const Sidebar = ({ openSettings, settings }) => {
-  const isDark = settings?.theme === 'dark';
+const Sidebar = ({ openSettings, settings }: SidebarProps) => {
+  const isDark = settings.theme === 'dark';
   const buttonClass = `w-full mb-2 flex items-center p-3 rounded-md text-left ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`;
   const iconClass = "w-5 h-5 mr-2";
 
@@ -37,5 +38,4 @@ const Sidebar = ({ openSettings, settings }) => {
     </div>
   );
 };
-
 export default Sidebar;

@@ -1,4 +1,6 @@
-const ChatMessage = ({ message, settings }) => {
+import type { ChatMessageProps } from '../types';
+
+const ChatMessage = ({ message, settings }: ChatMessageProps) => {
   const isUser = message.sender === 'user';
   const isDark = settings.theme === 'dark';
 
@@ -10,5 +12,4 @@ const ChatMessage = ({ message, settings }) => {
     </div>
   );
 };
-
 export default ChatMessage;

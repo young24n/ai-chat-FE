@@ -1,9 +1,10 @@
 import ChatInput from '../components/ChatInput';
 import ChatMessage from '../components/ChatMessage';
 import { LoaderCircle } from 'lucide-react';
+import type { ChatAreaProps } from '../types';
 
-const ChatArea = ({ messages, sendMessage, isLoading, settings }) => {
-  const isDark = settings?.theme === 'dark';
+const ChatArea = ({ messages, sendMessage, isLoading, settings }: ChatAreaProps) => {
+  const isDark = settings.theme === 'dark';
 
   return (
     <div className={`flex-1 flex flex-col ${isDark ? 'bg-gray-800' : 'bg-white'}`}>

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { SendIcon } from 'lucide-react';
+import type { ChatInputProps } from '../types';
 
-const ChatInput = ({ sendMessage, isLoading, settings }) => {
+const ChatInput = ({ sendMessage, isLoading, settings }: ChatInputProps) => {
   const [input, setInput] = useState('');
-  const isDark = settings?.theme === 'dark';
+  const isDark = settings.theme === 'dark';
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim()) {
       sendMessage(input);
@@ -18,7 +19,7 @@ const ChatInput = ({ sendMessage, isLoading, settings }) => {
       <input
         type="text"
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
         placeholder="메시지를 입력하세요..."
         className={
           `flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ` +

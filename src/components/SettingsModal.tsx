@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { XIcon, SunIcon } from 'lucide-react';
+import type { SettingsModalProps, Settings } from '../types';
 
-const SettingsModal = ({ settings, updateSettings, closeSettings }) => {
-  const [localSettings, setLocalSettings] = useState(settings);
+const SettingsModal = ({ settings, updateSettings, closeSettings }: SettingsModalProps) => {
+  const [localSettings, setLocalSettings] = useState<Settings>(settings);
 
-  const handleSettingChange = (key: string, value: string) => {
-    setLocalSettings(prev => ({ ...prev, [key]: value }));
+  const handleSettingChange = (value: Settings['theme']) => {
+    setLocalSettings({ theme: value });
   };
   const handleSave = () => {
     updateSettings(localSettings);
@@ -36,7 +37,7 @@ const SettingsModal = ({ settings, updateSettings, closeSettings }) => {
                   name="theme"
                   value="light"
                   checked={localSettings.theme === 'light'}
-                  onChange={e => handleSettingChange('theme', e.target.value)}
+                  onChange={() => handleSettingChange('light')}
                   className="mr-2"
                 />
                 <span>라이트 모드</span>
@@ -47,7 +48,7 @@ const SettingsModal = ({ settings, updateSettings, closeSettings }) => {
                   name="theme"
                   value="dark"
                   checked={localSettings.theme === 'dark'}
-                  onChange={e => handleSettingChange('theme', e.target.value)}
+                  onChange={() => handleSettingChange('dark')}
                   className="mr-2"
                 />
                 <span className="flex items-center">
