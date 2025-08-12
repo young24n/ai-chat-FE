@@ -12,14 +12,29 @@ export function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  // Todo: 추후 localStorage 확인 후 기본값 배정하도록 변경
-  const [settings, setSettings] = useState<Settings>({
-    theme: 'light',
+  
+  const [settings, setSettings] = useState<Settings>(() => {
+    try {
+      const savedSettings = localStorage.getItem('settings');
+      if (savedSettings) {
+        const parsedSettings = JSON.parse(savedSettings);
+        if (parsedSettings.theme) {
+          return parsedSettings;
+        }
+      }
+    } catch (error) {
+      console.error("Failed to parse settings from localStorage", error);
+    }
+    return { theme: 'light' };
   });
 
   const openSettings = () => setIsSettingsOpen(true);
   const closeSettings = () => setIsSettingsOpen(false);
-  const updateSettings = (newSettings: Settings) => setSettings(newSettings);
+  
+  const updateSettings = (newSettings: Settings) => {
+    setSettings(newSettings);
+    localStorage.setItem('settings', JSON.stringify(newSettings));
+  };
 
   // 임시형태 추후 API 구현 후 변경 예정
   const sendMessage = (text: string) => {
