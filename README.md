@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 
@@ -57,3 +58,7 @@ export default tseslint.config([
   },
 ])
 ```
+=======
+# ai-chat-FE
+난 무료가 좋아~
+>>>>>>> 08f3199836b36f8e68595e93b8e19e2d41f94129
