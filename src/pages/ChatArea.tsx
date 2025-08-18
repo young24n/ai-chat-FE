@@ -10,8 +10,8 @@ const ChatArea = ({ messages, sendMessage, isLoading, settings }: ChatAreaProps)
     <div className={`flex-1 flex flex-col ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
       <div className={`p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <h2 className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          <select className={`text-lg text-grey-500 ${isDark ? 'text-gray-400' : 'text-gray-500'}`} name='model'>
-            <option className={'rounded'} value="model1">model 1</option>
+          <select className={`text-lg text-grey-500 ${isDark ? 'text-gray-400' : 'text-gray-500'} `} name='model'>
+            <option value="model1">model 1</option>
             <option value="model2">model 2</option>
             <option value="model3">model 3</option>
           </select>
@@ -31,6 +31,14 @@ const ChatArea = ({ messages, sendMessage, isLoading, settings }: ChatAreaProps)
                 </div>
                 <p className="text-lg font-medium">무엇을 도와드릴까요?</p>
                 <p className="text-sm">궁금한 것을 물어보세요</p>
+                {!settings.apiKey ? 
+                <p className="mt-4 text-sm text-red-600">
+                  시작 전 제공받은 키를 설정에서 입력하세요
+                </p> : (
+                <p className="mt-4 text-sm text-green-600">
+                  키가 확인되었습니다
+                </p>
+              )}
               </div>
             )
             : messages.map(message => (

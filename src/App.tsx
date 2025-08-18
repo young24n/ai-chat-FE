@@ -12,20 +12,23 @@ export function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  
+
+
   const [settings, setSettings] = useState<Settings>(() => {
     try {
       const savedSettings = localStorage.getItem('settings');
       if (savedSettings) {
         const parsedSettings = JSON.parse(savedSettings);
-        if (parsedSettings.theme) {
+        // theme과 apiKey가 모두 있는지 확인
+        if (parsedSettings.theme && typeof parsedSettings.apiKey !== 'undefined') {
           return parsedSettings;
         }
       }
     } catch (error) {
       console.error("Failed to parse settings from localStorage", error);
     }
-    return { theme: 'light' };
+    // 기본값
+    return { theme: 'light', apiKey: '' };
   });
 
   const openSettings = () => setIsSettingsOpen(true);

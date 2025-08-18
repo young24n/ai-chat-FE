@@ -2,6 +2,7 @@ export type Theme = 'light' | 'dark';
 
 export interface Settings {
   theme: 'light' | 'dark';
+  apiKey: string;
 }
 
 export type Sender = 'user' | 'bot';
@@ -16,6 +17,7 @@ export interface Message {
 export interface SidebarProps {
   openSettings: () => void;
   settings: Settings;
+  clearMessages: () => void;
 }
 
 export interface SettingsModalProps {
